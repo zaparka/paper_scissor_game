@@ -14,8 +14,14 @@ class RockPaperScissorProcessor
   private
 
   def generate_results
-    @winner_hand = RockPaperScissorsLogic.who_wins?(player_hand, ai_hand)
-    @results = { winner: winner_name, player1_hand: player_hand, player2_hand: ai_hand }
+    win_result = RockPaperScissorsLogic.who_wins?(player_hand, ai_hand)
+    @winner_hand = win_result[:winner]
+    @results = {
+      winner: winner_name,
+      player1_hand: player_hand,
+      player2_hand: ai_hand,
+      winning_reason: win_result[:winning_reason]
+    }
   end
 
   def winner_name
@@ -34,6 +40,7 @@ class RockPaperScissorProcessor
 
   def store_results
     gr = results.merge(played_at: Time.now.to_s(:short))
+    gr.delete(:winning_reason)
     GameResult.create(gr)
   end
 

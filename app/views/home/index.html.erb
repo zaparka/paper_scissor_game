@@ -1,29 +1,38 @@
-<section class='game_page'>
+<section class='game_page col-sm-6'>
   <h2>Rock Paper Scissors</h2>
-
-  <h3>Winner is <span class="label label-success"></span> with <span></span></h3>
-
   <%= form_tag("/api/v1/rock_paper_scissors", method: "post", remote: true, class: 'form-horizontal', id: 'game_form') do %>
     <div class='form-group'>
-      <%= label_tag("player[player_name]", "Player1 Name:", class: "col-sm-2 control-label") %>
-      <div class="col-sm-5">
+      <%= label_tag("player[player_name]", "Player1 Name:", class: "col-sm-4 control-label") %>
+      <div class="col-sm-8">
         <%= text_field_tag("player[player_name]", '', class: "form-control") %>
       </div>
     </div>
     <div class='form-group'>
-      <%= label_tag("player[player_hand]", "What is your choice?", class: "col-sm-2 control-label") %>
-      <div class="col-sm-5">
-        <%= select_tag "player[player_hand]", options_for_select(list_of_options), include_blank: true, class:"form-control" %>
+      <%= label_tag("player[player_hand]", "What is your choice?", class: "col-sm-4 control-label") %>
+      <div class="col-sm-8">
+        <%= select_tag "player[player_hand]", options_for_select(list_of_options), class:"form-control" %>
       </div>
     </div>
     <div class='form-group'>
-      <div class="col-sm-offset-2 col-sm-5">
+      <div class="col-sm-offset-4 col-sm-8">
         <%= submit_tag("Play", class: 'btn btn-primary') %>
       </div>
     </div>
   <% end %>
+  <section class="results">
+    <h3>Results</h3>
+    <h5>Winner is <span class="label label-success"></span> because <span></span></h5>
+    <p class='player_info'></p>
+  </section>
+
 </section>
 
-<section>
-  Rules
+<section class='col-sm-6'>
+  <h2>Rules</h2>
+  <ul>
+    <li>There are 3 valid moves: Rock, Paper, Scissors</li>
+    <li>Rock breaks Scissors</li>
+    <li>Paper covers Rock</li>
+    <li>Scissors cut Paper</li>
+  </ul>
 </section>
