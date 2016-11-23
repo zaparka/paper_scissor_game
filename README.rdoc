@@ -1,28 +1,24 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== Rock Paper Scissors game
 
-Things you may want to cover:
+=== Architecture description
+I'm using unobtrusive javascript for passing game values (name, players hand) via API call to
+controller. Controller then process values from params and calls Processor which
+handles AI hand (very simple random selection), results of a game and storing results.
 
-* Ruby version
+Result of a game is displayed based on API response.
 
-* System dependencies
+There is a table of previous results.
+Players name is just text field bcs I didn't add more complexity.
 
-* Configuration
+=== What do you need to run it.
 
-* Database creation
+* Clone this repository
+* Install Ruby -v >= 2.3.1
+* Install gem Bundler
+* Run bundle install
+* Run rake db:setup and rake db:migrate
+* Run rails server
+* That's it
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
