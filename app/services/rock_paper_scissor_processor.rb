@@ -1,5 +1,5 @@
 class RockPaperScissorProcessor
-  attr_reader :results, :player_hand, :ai_hand
+  attr_reader :results, :player_hand, :player_name, :ai_hand
 
   def initialize(player_info)
     @player_name = player_info[:player_name]
@@ -29,7 +29,7 @@ class RockPaperScissorProcessor
   end
 
   def ai_hand
-    @ai_hand ||= RockPaperScissorLogic::VARIANTS.sample
+    @ai_hand ||= RockPaperScissorsLogic::VARIANTS.sample
   end
 
   def store_results
