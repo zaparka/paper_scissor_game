@@ -1,7 +1,9 @@
-<section>
+<section class='game_page'>
   <h2>Rock Paper Scissors</h2>
 
-  <%= form_tag("/api/v1/rock_paper_scissors", method: "post", remote: true, class: 'form-horizontal') do %>
+  <h3>Winner is <span class="label label-success"></span> with <span></span></h3>
+
+  <%= form_tag("/api/v1/rock_paper_scissors", method: "post", remote: true, class: 'form-horizontal', id: 'game_form') do %>
     <div class='form-group'>
       <%= label_tag("player[player_name]", "Player1 Name:", class: "col-sm-2 control-label") %>
       <div class="col-sm-5">
@@ -20,4 +22,8 @@
       </div>
     </div>
   <% end %>
+</section>
+
+<section>
+  Rules
 </section>
