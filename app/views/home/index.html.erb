@@ -1,6 +1,6 @@
-<h1>Rock Paper Scissors</h1>
-
 <section>
+  <h2>Rock Paper Scissors</h2>
+
   <%= form_tag("/api/v1/rock_paper_scissors", method: "post", remote: true, class: 'form-horizontal') do %>
     <div class='form-group'>
       <%= label_tag("player[player_name]", "Player1 Name:", class: "col-sm-2 control-label") %>

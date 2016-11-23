@@ -1,0 +1,20 @@
+<section class="col-sm-12">
+
+  <h2>Results</h2>
+  <table class="table table-striped">
+    <tr>
+      <th>Winner</th>
+      <th>Player 1 hand</th>
+      <th>Player 2 hand</th>
+      <th>Played at</th>
+    </tr>
+    <%- @results.each do |result| %>
+      <tr>
+        <td><%= result.winner %></td>
+        <td><%= result.player1_hand %></td>
+        <td><%= result.player2_hand %></td>
+        <td><%= result.played_at.to_s(:short) %></td>
+      </tr>
+    <% end %>
+  </table>
+<section>
