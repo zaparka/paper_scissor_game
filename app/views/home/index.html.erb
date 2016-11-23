@@ -1,1 +1,23 @@
-Hello
+<h1>Rock Paper Scissors</h1>
+
+<section>
+  <%= form_tag("/api/v1/rock_paper_scissors", method: "post", remote: true, class: 'form-horizontal') do %>
+    <div class='form-group'>
+      <%= label_tag("player[player_name]", "Player1 Name:", class: "col-sm-2 control-label") %>
+      <div class="col-sm-5">
+        <%= text_field_tag("player[player_name]", '', class: "form-control") %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <%= label_tag("player[player_hand]", "What is your choice?", class: "col-sm-2 control-label") %>
+      <div class="col-sm-5">
+        <%= select_tag "player[player_hand]", options_for_select(list_of_options), include_blank: true, class:"form-control" %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class="col-sm-offset-2 col-sm-5">
+        <%= submit_tag("Play", class: 'btn btn-primary') %>
+      </div>
+    </div>
+  <% end %>
+</section>
