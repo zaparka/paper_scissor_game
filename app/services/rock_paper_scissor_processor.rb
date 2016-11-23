@@ -8,8 +8,7 @@ class RockPaperScissorProcessor
 
   def play
     generate_results
-    # call ai for hand and compare
-    # store results
+    store_results
   end
 
   private
@@ -23,7 +22,7 @@ class RockPaperScissorProcessor
     if @winner_hand == player_hand
       player_name
     elsif @winner_hand == ai_hand
-      'HAll 9000'
+      'HALL 9000'
     else
       'No one'
     end
@@ -34,6 +33,8 @@ class RockPaperScissorProcessor
   end
 
   def store_results
+    gr = results.merge(played_at: Time.now.to_s(:short))
+    GameResult.create(gr)
   end
 
 end

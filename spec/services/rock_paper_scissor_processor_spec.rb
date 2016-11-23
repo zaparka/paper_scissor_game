@@ -14,20 +14,21 @@ RSpec.describe RockPaperScissorProcessor do
   describe "Play" do
     it "call AI for it's hand and compare" do
       allow(processor).to receive(:ai_hand).and_return 'paper'
-      allow(processor).to receive(:store_results)
+      allow(processor).to receive(:store_results).and_return true
       expect(trigger).to be_truthy
-      expect(processor.results[:winner]).to eql('HAll 9000')
+      expect(processor.results[:winner]).to eql('HALL 9000')
     end
 
     it "store result of a game" do
+      allow(Time).to receive(:now).and_return(Time.parse('23 Nov 01:06'))
+
       allow(processor).to receive(:ai_hand).and_return 'paper'
       expect(trigger).to be_truthy
-      expect(GameResult).to receive(:create).with({
-        winner: 'Name',
-        player1_hand: 'rock',
-        player2_hand: 'paper',
-        played_at: Time.now.to_s(:short)
-      })
+      result = GameResult.last
+      expect(result.winner).to eql('HALL 9000')
+      expect(result.player1_hand).to eql('rock')
+      expect(result.player2_hand).to eql('paper')
+      expect(result.played_at.to_s(:short)).to eql('23 Nov 01:06')
     end
   end
 end
